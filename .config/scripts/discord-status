@@ -1,0 +1,9 @@
+#!/bin/bash
+
+discord=`pgrep -c Discord`
+
+if [ $discord == "0" ]; then
+    echo ""
+else
+    echo "ﭮ"
+fi

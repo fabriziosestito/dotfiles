@@ -1,0 +1,9 @@
+#!/bin/bash
+
+slack=`pgrep -c slack`
+
+if [ $slack == "1" ]; then
+    echo ""
+else
+    echo "聆"
+fi

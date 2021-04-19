@@ -1,0 +1,19 @@
+#!/bin/bash
+
+xfsettingsd &
+xfce4-power-manager &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+picom -b
+
+.config/polybar/launch.sh
+
+setxkbmap -layout it
+setxkbmap -option caps:super
+
+nitrogen --restore
+
+pulseaudio --start
+
+dunst &
+
+flameshot &
