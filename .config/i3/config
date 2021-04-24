@@ -193,3 +193,4 @@ bindsym $mod+semicolon workspace prev_on_output
 exec_always --no-startup-id ~/.config/scripts/start
 
 bindsym $mod+t exec --no-startup-id tilix --quake
+bindsym $mod+z exec ~/.config/scripts/toggle_zen_mode
