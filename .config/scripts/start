@@ -4,10 +4,12 @@ xfsettingsd &
 xfce4-power-manager &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-if pgrep picom &> /dev/null ; then pkill picom ; fi
+.config/polybar/launch.sh
+
+pkill picom
+while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
 picom -b
 
-.config/polybar/launch.sh
 
 setxkbmap -layout it
 setxkbmap -option caps:super
