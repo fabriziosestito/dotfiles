@@ -1,0 +1,46 @@
+window:
+  dimensions:
+    columns: 80
+    lines: 30
+  padding:
+    x: 40
+    y: 40
+    
+colors:
+  # Default colors
+  primary:
+    background: '0x2a2426'
+    foreground: '0xe6d6ac'
+
+  # Normal colors
+  normal:
+    black:   '0x2a2426'
+    red:     '0xe68183'
+    green:   '0xa7c080'
+    yellow:  '0xd9bb80'
+    blue:    '0x89beba'
+    magenta: '0xd3a0bc'
+    cyan:    '0x87c095'
+    white:   '0xe6d6ac'
+
+  # Bright colors
+  bright:
+    black:   '0x52464a'
+    red:     '0xff8b92'
+    green:   '0xddffa7'
+    yellow:  '0xffae57'
+    blue:    '0x9cc4ff'
+    magenta: '0xe1acff'
+    cyan:    '0x95e6cb'
+    white:   '0xffffff'
+
+draw_bold_text_with_bright_colors: true
+
+
+font:
+  normal:
+    family: SF Mono
+    style: Medium
+  size: 12.0
+
+background_opacity: 1
