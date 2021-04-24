@@ -190,6 +190,6 @@ bindsym $mod+r mode "resize"
 bindsym $mod+colon workspace next_on_output
 bindsym $mod+semicolon workspace prev_on_output
 
-exec --no-startup-id ~/.config/scripts/start
+exec_always --no-startup-id ~/.config/scripts/start
 
 bindsym $mod+t exec --no-startup-id tilix --quake

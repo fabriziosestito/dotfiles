@@ -3,6 +3,8 @@
 xfsettingsd &
 xfce4-power-manager &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+if pgrep picom &> /dev/null ; then pkill picom ; fi
 picom -b
 
 .config/polybar/launch.sh
