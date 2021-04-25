@@ -58,7 +58,7 @@ return {
 	color_scheme_dirs = {"~/.config/wezterm/colors"},
 	color_scheme = "Miramare",
 	font = wezterm.font("SF Mono"),
-	font_size = 12,
+	font_size = 13,
 	window_padding = {
     	left = 40,
     	-- This will become the scrollbar width if you have enabled the scrollbar!
