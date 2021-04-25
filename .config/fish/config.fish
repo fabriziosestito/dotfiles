@@ -37,7 +37,8 @@ set -U fish_pager_color_progress      'brwhite' '--background=cyan'
 
 alias c "clear; fish_greeting"
 alias mm="~/.config/scripts/move_mouse.sh"
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias nano="micro"
 
 set -x ERL_AFLAGS "-kernel shell_history enabled"
 source ~/.asdf/asdf.fish
