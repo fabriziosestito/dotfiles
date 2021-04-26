@@ -1,5 +1,35 @@
 local wezterm = require 'wezterm';
 
+function string:split(delimiter)
+    local result = {}
+    local from = 1
+    local delim_from, delim_to = string.find(self, delimiter, from, true)
+    while delim_from do
+        if (delim_from ~= 1) then
+            table.insert(result, string.sub(self, from, delim_from-1))
+        end
+        from = delim_to + 1
+        delim_from, delim_to = string.find(self, delimiter, from, true)
+    end
+    if (from <= #self) then table.insert(result, string.sub(self, from)) end
+    return result
+end
+
+wezterm.on("open-uri", function(window, pane, uri)
+  print(uri)
+  local cmd, file_name, line_no = string:split(uri, ":")
+  if cmd ~= "edit" then
+    window:perform_action(wezterm.action{SpawnCommandInNewWindow={
+         args={"emacs", file_name}
+      }}, pane);
+    -- prevent the default action from opening in a browser
+    return false
+  end
+  -- otherwise, by not specifying a return value, we allow later
+  -- handlers and ultimately the default action to caused the
+  -- URI to be opened in the browser
+end)
+
 return {
   colors = {
     tab_bar = {
@@ -70,6 +100,40 @@ return {
   keys = {
     {key="+", mods="CTRL", action="IncreaseFontSize"},
     {key="-", mods="CTRL", action="DecreaseFontSize"},
-  }, 
-}
+  },
+  window_close_confirmation = "NeverPrompt",
+  hyperlink_rules = {
+    -- Linkify things that look like URLs
+    -- This is actually the default if you don't specify any hyperlink_rules
+    {
+      regex = "\\b\\w+://(?:[\\w.-]+)\\S*\\b",
+      format = "$0",
+    },
 
+    -- linkify email addresses
+    {
+      regex = "\\b\\w+@[\\w-]+(\\.[\\w-]+)+\\b",
+      format = "mailto:$0",
+    },
+
+    -- file:// URI
+    {
+      regex = "\\bfile://\\S*\\b",
+      format = "$0",
+    },
+
+    -- file:// URI
+    {
+      regex = "(/?(?:[\\w.-]+/)*[\\w.-]+):(\\d+)",
+      format = "edit:$1:$2",
+    },
+
+    -- Make task numbers clickable
+    --[[
+    {
+      regex = "\\b[tT](\\d+)\\b"
+      format = "https://example.com/tasks/?t=$1"
+    }
+    ]]
+  }
+}
