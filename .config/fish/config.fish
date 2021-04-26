@@ -41,6 +41,7 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias nano="micro"
 alias m="micro"
 alias e="emacsclient"
+alias ls='ls -FGh --color=auto --hyperlink=auto'
 
 set -x ERL_AFLAGS "-kernel shell_history enabled"
 source ~/.asdf/asdf.fish
