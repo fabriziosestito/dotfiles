@@ -1,6 +1,20 @@
 ;; -*- mode: emacs-lisp; lexical-binding: t -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
+(defun open-in-vscode ()
+"Open current file or dir in vscode"
+(interactive)
+(let (($path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory ) )))
+  (message "path is %s" $path)
+  (shell-command (format "code-insiders \"%s\"" $path))))
+
+(defun difftool ()
+  "Open current file or dir in vscode"
+  (interactive)
+  (let (($path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory ) )))
+    (message "path is %s" $path)
+    (shell-command (format "cd %s && git difftool -y --skip-to=%s" default-directory
+                           (file-relative-name buffer-file-name)))))
 
 (defun dotspacemacs/layers ()
   "Layer configuration:
@@ -59,7 +73,8 @@ This function should only modify configuration layer settings."
      ;; syntax-checking
      ;; version-control
      docker
-     treemacs)
+     (treemacs :variables treemacs-use-all-the-icons-theme t)
+     )
 
 
    ;; List of additional packages that will be installed without being wrapped
@@ -234,8 +249,8 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
-   
+   ;; dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(doom)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
@@ -577,7 +592,7 @@ before packages are loaded."
   (global-set-key (kbd "<C-s-down>") 'windmove-down)
   (global-set-key (kbd "<C-s-left>") 'windmove-left)
   (global-set-key (kbd "<C-s-right>") 'windmove-right)
-
+;;  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
   (treemacs)
 )
 
