@@ -47,4 +47,4 @@ set -x ERL_AFLAGS "-kernel shell_history enabled"
 source ~/.asdf/asdf.fish
 
 set PATH $PATH ~/go/bin
-
+set PATH $PATH ~/.config/scripts
