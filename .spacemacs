@@ -1,21 +1,6 @@
 ;; -*- mode: emacs-lisp; lexical-binding: t -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
-(defun open-in-vscode ()
-"Open current file or dir in vscode"
-(interactive)
-(let (($path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory ) )))
-  (message "path is %s" $path)
-  (shell-command (format "code-insiders \"%s\"" $path))))
-
-(defun difftool ()
-  "Open current file or dir in vscode"
-  (interactive)
-  (let (($path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory ) )))
-    (message "path is %s" $path)
-    (shell-command (format "cd %s && git difftool -y --skip-to=%s" default-directory
-                           (file-relative-name buffer-file-name)))))
-
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -85,7 +70,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(doom-themes)
+   dotspacemacs-additional-packages '(doom-themes format-all)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -418,11 +403,11 @@ It should only modify the values of Spacemacs settings."
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
    dotspacemacs-line-numbers '(:relative nil
-                               :visual nil
-                            :disabled-for-modes dired-mode
-                                                doc-view-mode
-                                                pdf-view-mode
-                            :size-limit-kb 1000)
+                                         :visual nil
+                                         :disabled-for-modes dired-mode
+                                         doc-view-mode
+                                         pdf-view-mode
+                                         :size-limit-kb 1000)
    ;; Code folding method. Possible values are `evil', `origami' and `vimish'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -547,7 +532,7 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq evil-toggle-key "C-'")
-)
+  )
 
 
 (defun dotspacemacs/user-load ()
@@ -575,6 +560,19 @@ before packages are loaded."
   (setq lsp-elixir-dialyzer-enabled nil)
   (setq lsp-enable-file-watchers nil)
 
+  (defun lain/open-in-vscode ()
+    "Open current file or dir in vscode"
+    (interactive)
+    (let (($path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory ) )))
+      (message "path is %s" $path)
+      (shell-command (format "code-insiders \"%s\"" $path))))
+
+  (defun lain/difftool ()
+    "Open current file or dir in vscode"
+    (interactive)
+    (shell-command (format "cd %s && git difftool -y --skip-to=%s" default-directory
+                           (file-relative-name buffer-file-name))))
+
   (global-set-key (kbd "C-z") 'undo)
   (global-set-key (kbd "C-S-Z") 'undo-tree-redo)
   (global-set-key (kbd "C-d") 'mc/mark-next-like-this)
@@ -583,18 +581,41 @@ before packages are loaded."
   (global-set-key (kbd "<M-down>") 'drag-stuff-down)
   (global-set-key (kbd "C-w") 'spacemacs/kill-this-buffer)
   (global-set-key (kbd "C-S-F") 'spacemacs/helm-project-smart-do-search)
+  (global-set-key (kbd "C-S-I") 'format-all-buffer)
   (global-set-key (kbd "C-t") 'helm-lsp-workspace-symbol)
   (global-set-key (kbd "C-p") 'helm-projectile)
+
+  ;; C-f in a buffer: open helm-swoop with empty search field
   (global-set-key (kbd "C-f") 'helm-swoop)
+  (with-eval-after-load 'helm-swoop
+    (setq helm-swoop-pre-input-function
+          (lambda () nil)))
+
+  ;; C-f in helm-swoop with empty search field: activate previous search.
+  ;; C-f in helm-swoop with non-empty search field: go to next match.
+  (with-eval-after-load 'helm-swoop
+    (define-key helm-swoop-map (kbd "C-f") 'lain/helm-swoop-C-f))
+
+  (defun lain/helm-swoop-C-f ()
+    (interactive)
+    (if (boundp 'helm-swoop-pattern)
+        (if (equal helm-swoop-pattern "")
+            (previous-history-element 1)
+          (helm-next-line))
+      (helm-next-line)
+      ))
+
   (global-set-key (kbd "C-s") 'save-buffer)
   (global-set-key (kbd "C-S-7") 'comment-dwim)
   (global-set-key (kbd "<C-s-up>") 'windmove-up)
   (global-set-key (kbd "<C-s-down>") 'windmove-down)
   (global-set-key (kbd "<C-s-left>") 'windmove-left)
   (global-set-key (kbd "<C-s-right>") 'windmove-right)
-;;  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
+
+
+  ;;  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
   (treemacs)
-)
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -604,38 +625,38 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(cua-mode t nil (cua-base))
- '(custom-safe-themes
-   '("d5a878172795c45441efcd84b20a14f553e7e96366a163f742b95d65a3f55d71" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))
- '(evil-want-Y-yank-to-eol nil)
- '(hl-todo-keyword-faces
-   '(("TODO" . "#dc752f")
-     ("NEXT" . "#dc752f")
-     ("THEM" . "#2d9574")
-     ("PROG" . "#4f97d7")
-     ("OKAY" . "#4f97d7")
-     ("DONT" . "#f2241f")
-     ("FAIL" . "#f2241f")
-     ("DONE" . "#86dc2f")
-     ("NOTE" . "#b1951d")
-     ("KLUDGE" . "#b1951d")
-     ("HACK" . "#b1951d")
-     ("TEMP" . "#b1951d")
-     ("FIXME" . "#dc752f")
-     ("XXX+" . "#dc752f")
-     ("\\?\\?\\?+" . "#dc752f")))
- '(package-selected-packages
-   '(yaml-mode web-beautify tern prettier-js npm-mode nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode htmlize simple-httpd add-node-modules-path godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc flycheck-golangci-lint company-go go-mode xterm-color vterm terminal-here shell-pop multi-term eshell-z eshell-prompt-extras esh-help ob-elixir helm-gtags ggtags flycheck-credo dap-mode bui counsel-gtags counsel swiper ivy alchemist elixir-mode yasnippet-snippets unfill treemacs-magit smeargle mwim mmm-mode markdown-toc magit-section lsp-ui lsp-treemacs lsp-origami origami helm-lsp lsp-mode helm-gitignore helm-git-grep helm-company helm-c-yasnippet gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy forge markdown-mode magit ghub closql emacsql-sqlite emacsql treepy git-commit with-editor transient flycheck-pos-tip pos-tip company centaur-tabs auto-yasnippet yasnippet ac-ispell auto-complete ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired toc-org symon symbol-overlay string-inflection string-edit spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
- '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e")))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(cua-mode t nil (cua-base))
+   '(custom-safe-themes
+     '("d5a878172795c45441efcd84b20a14f553e7e96366a163f742b95d65a3f55d71" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))
+   '(evil-want-Y-yank-to-eol nil)
+   '(hl-todo-keyword-faces
+     '(("TODO" . "#dc752f")
+       ("NEXT" . "#dc752f")
+       ("THEM" . "#2d9574")
+       ("PROG" . "#4f97d7")
+       ("OKAY" . "#4f97d7")
+       ("DONT" . "#f2241f")
+       ("FAIL" . "#f2241f")
+       ("DONE" . "#86dc2f")
+       ("NOTE" . "#b1951d")
+       ("KLUDGE" . "#b1951d")
+       ("HACK" . "#b1951d")
+       ("TEMP" . "#b1951d")
+       ("FIXME" . "#dc752f")
+       ("XXX+" . "#dc752f")
+       ("\\?\\?\\?+" . "#dc752f")))
+   '(package-selected-packages
+     '(yaml-mode web-beautify tern prettier-js npm-mode nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode htmlize simple-httpd add-node-modules-path godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc flycheck-golangci-lint company-go go-mode xterm-color vterm terminal-here shell-pop multi-term eshell-z eshell-prompt-extras esh-help ob-elixir helm-gtags ggtags flycheck-credo dap-mode bui counsel-gtags counsel swiper ivy alchemist elixir-mode yasnippet-snippets unfill treemacs-magit smeargle mwim mmm-mode markdown-toc magit-section lsp-ui lsp-treemacs lsp-origami origami helm-lsp lsp-mode helm-gitignore helm-git-grep helm-company helm-c-yasnippet gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy forge markdown-mode magit ghub closql emacsql-sqlite emacsql treepy git-commit with-editor transient flycheck-pos-tip pos-tip company centaur-tabs auto-yasnippet yasnippet ac-ispell auto-complete ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired toc-org symon symbol-overlay string-inflection string-edit spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+   '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e")))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+  )
