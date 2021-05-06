@@ -22,7 +22,7 @@ set -U fish_color_host                normal
 set -U fish_color_match               --background=brblue
 set -U fish_color_normal              normal
 set -U fish_color_operator            cyan
-set -U fish_color_param               brblue
+set -U fish_color_param               blue
 set -U fish_color_quote               yellow
 set -U fish_color_redirection         bryellow
 set -U fish_color_search_match        'bryellow' '--background=brblack'
@@ -48,3 +48,4 @@ source ~/.asdf/asdf.fish
 
 set PATH $PATH ~/go/bin
 set PATH $PATH ~/.config/scripts
+set EDITOR micro

@@ -187,9 +187,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+colon workspace next_on_output
-bindsym $mod+semicolon workspace prev_on_output
+bindsym $mod+period workspace next_on_output
+bindsym $mod+comma workspace prev_on_output
 
 exec_always --no-startup-id ~/.config/scripts/start
 
 bindsym $mod+z exec ~/.config/scripts/toggle_zen_mode
+
+bindsym $mod+Shift+i exec setxkbmap -layout it && setxkbmap -option caps:super
+bindsym $mod+Shift+u exec setxkbmap -layout us && setxkbmap -option caps:super

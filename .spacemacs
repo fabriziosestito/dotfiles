@@ -34,7 +34,7 @@ This function should only modify configuration layer settings."
    '(erlang
      yaml
      javascript
-     (go :variables go-format-before-save t)
+     (go :variables go-format-before-save t go-use-golangci-lint t) 
      elixir
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -534,6 +534,7 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq evil-toggle-key "C-'")
+  (setq comp-async-report-warnings-errors nil)
   )
 
 

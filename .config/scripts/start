@@ -11,7 +11,7 @@ while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
 picom -b
 
 
-setxkbmap -layout it
+setxkbmap -layout us
 setxkbmap -option caps:super
 
 nitrogen --restore
