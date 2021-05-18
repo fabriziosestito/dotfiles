@@ -35,13 +35,15 @@ set -U fish_pager_color_description   yellow
 set -U fish_pager_color_prefix        'white' '--bold' '--underline'
 set -U fish_pager_color_progress      'brwhite' '--background=cyan'
 
-alias c "clear; fish_greeting"
+alias c="code-insiders"
+alias g "clear; fish_greeting"
 alias mm="~/.config/scripts/move_mouse"
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias nano="micro"
 alias m="micro"
 alias e="emacsclient"
 alias ls='ls -FGh --color=auto --hyperlink=auto'
+alias k=kubectl
 
 set -x ERL_AFLAGS "-kernel shell_history enabled"
 source ~/.asdf/asdf.fish
@@ -49,3 +51,5 @@ source ~/.asdf/asdf.fish
 set PATH $PATH ~/go/bin
 set PATH $PATH ~/.config/scripts
 set EDITOR micro
+set KUBE_EDITOR micro
+set --universal FZF_DEFAULT_COMMAND 'fd'

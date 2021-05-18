@@ -3,7 +3,7 @@
 xfsettingsd &
 xfce4-power-manager &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
+gnome-keyring-daemon
 .config/polybar/launch.sh
 
 pkill picom
@@ -12,7 +12,9 @@ picom -b
 
 
 setxkbmap -layout us
-setxkbmap -option caps:super
+setxkbmap -option caps:hyper
+xmodmap ~/.Xmodmap
+sudo xkeysnail ~/.config/xkeysnail/config.py --watch -q & 
 
 nitrogen --restore
 
