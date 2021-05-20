@@ -14,7 +14,7 @@ picom -b
 setxkbmap -layout us
 setxkbmap -option caps:hyper
 xmodmap ~/.Xmodmap
-sudo xkeysnail ~/.config/xkeysnail/config.py --watch -q & 
+#sudo xkeysnail ~/.config/xkeysnail/config.py --watch -q & 
 
 nitrogen --restore
 
