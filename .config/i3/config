@@ -16,8 +16,17 @@ set $mod Mod3
 for_window [class="^.*"] border pixel 0
 for_window [title="EQUAKE"] floating enable
 
+workspace 1 output primary
+workspace 2 output primary
+workspace 3 output primary
+workspace 4 output primary
+workspace 5 output primary
+workspace 6 output primary
+workspace 7 output primary
+workspace 8 output primary
 workspace 9 output secondary
 workspace 10 output secondary
+
 for_window [workspace="10"] floating enable 
 
 for_window [urgent=latest] focus
