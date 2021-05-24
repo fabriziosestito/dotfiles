@@ -16,9 +16,9 @@ set $mod Mod3
 for_window [class="^.*"] border pixel 0
 for_window [title="EQUAKE"] floating enable
 
-for_window [workspace="8"] floating enable
-for_window [workspace="9"] floating enable
-for_window [workspace="10"] floating enable
+workspace 9 output secondary
+workspace 10 output secondary
+for_window [workspace="10"] floating enable 
 
 for_window [urgent=latest] focus
 focus_on_window_activation focus
