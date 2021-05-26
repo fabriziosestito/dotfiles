@@ -14,7 +14,6 @@ set $mod Mod3
 
 # Turn borders off
 for_window [class="^.*"] border pixel 0
-for_window [title="EQUAKE"] floating enable
 
 workspace 1 output primary
 workspace 2 output primary
@@ -68,6 +67,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id tilix
+bindsym $mod+b exec --no-startup-id vivaldi-stable
 
 # kill focused window
 bindsym $mod+Shift+q kill

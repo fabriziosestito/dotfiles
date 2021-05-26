@@ -39,8 +39,8 @@ alias c="code-insiders"
 alias g "clear; fish_greeting"
 alias mm="~/.config/scripts/move_mouse"
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias nano="micro"
-alias m="micro"
+alias nano="nvim"
+alias n="nvim"
 alias e="emacsclient"
 alias ls='ls -FGh --color=auto --hyperlink=auto'
 alias k=kubectl
@@ -50,6 +50,6 @@ source ~/.asdf/asdf.fish
 
 set PATH $PATH ~/go/bin
 set PATH $PATH ~/.config/scripts
-set EDITOR micro
-set KUBE_EDITOR micro
+set EDITOR nvim
+set KUBE_EDITOR nvim
 set --universal FZF_DEFAULT_COMMAND 'fd'
