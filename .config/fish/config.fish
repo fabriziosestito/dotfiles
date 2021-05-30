@@ -1,7 +1,7 @@
 starship init fish | source
 
 function fish_greeting
-    ufetch
+    pfetch
 end
 
 function "mix dyalizer"
