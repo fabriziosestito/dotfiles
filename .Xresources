@@ -1,4 +1,10 @@
+Xft.autohint: 0
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintslight
 Xft.dpi: 96
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
 
 ! special
 *.foreground:   #e6d6ac
@@ -48,7 +54,7 @@ rofi.opacity:                        100
 rofi.width:                          50
 rofi.lines:                          8
 rofi.columns:                        1
-rofi.font:                           SF Mono 14
+rofi.font:                           Cascadia Mono 14
 rofi.fg:                             #5294E2
 rofi.bg:                             #2a2426
 rofi.fg-active:                      #34405a
