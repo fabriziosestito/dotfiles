@@ -44,7 +44,8 @@ alias n="nvim"
 alias e="emacsclient"
 alias ls='ls -FGh --color=auto --hyperlink=auto'
 alias k=kubectl
-
+alias oni=~/Downloads/Onivim2-x86_64-master.AppImage
+alias o=oni
 set -x ERL_AFLAGS "-kernel shell_history enabled"
 source ~/.asdf/asdf.fish
 

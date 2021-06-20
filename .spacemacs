@@ -1,6 +1,7 @@
 ;; -*- mode: emacs-lisp; lexical-binding: t -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -31,11 +32,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(erlang
-     yaml
-     javascript
-     (go :variables go-format-before-save t)
-     elixir
+   '(yaml
+     go
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -47,11 +45,10 @@ This function should only modify configuration layer settings."
      git
      helm
      lsp
-     markdown
-     multiple-cursors
      tabs
-     shell
-     pdf
+     shell-scripts
+     ;; markdown
+     multiple-cursors
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -59,10 +56,7 @@ This function should only modify configuration layer settings."
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
-     dap
-     docker
-     (treemacs :variables treemacs-use-all-the-icons-theme t)
-     )
+     treemacs)
 
 
    ;; List of additional packages that will be installed without being wrapped
@@ -73,13 +67,13 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(doom-themes format-all)
+   dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(doom-miramare-theme)
+   dotspacemacs-excluded-packages '()
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -170,7 +164,7 @@ It should only modify the values of Spacemacs settings."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'emacs
+   dotspacemacs-editing-style 'vim
 
    ;; If non-nil show the version string in the Spacemacs buffer. It will
    ;; appear as (spacemacs version)@(emacs version)
@@ -201,6 +195,9 @@ It should only modify the values of Spacemacs settings."
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
 
+   ;; Show numbers before the startup list lines. (default t)
+   dotspacemacs-show-startup-list-numbers t
+
    ;; The minimum delay in seconds between number key presses. (default 0.4)
    dotspacemacs-startup-buffer-multi-digit-delay 0.4
 
@@ -227,7 +224,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-miramare
+   dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -237,8 +234,8 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   ;; dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
-   dotspacemacs-mode-line-theme '(doom)
+   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
@@ -246,8 +243,8 @@ It should only modify the values of Spacemacs settings."
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("SFMono Nerd Font"
-                               :size 13.0
+   dotspacemacs-default-font '("Fantasque iCursive Op"
+                               :size 16.0
                                :weight normal
                                :width normal)
 
@@ -405,12 +402,8 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers '(:relative nil
-                                         :visual nil
-                                         :disabled-for-modes dired-mode
-                                         doc-view-mode
-                                         pdf-view-mode
-                                         :size-limit-kb 1000)
+   dotspacemacs-line-numbers t
+
    ;; Code folding method. Possible values are `evil', `origami' and `vimish'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -436,7 +429,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
-   dotspacemacs-enable-server t
+   dotspacemacs-enable-server nil
 
    ;; Set the emacs server socket location.
    ;; If nil, uses whatever the Emacs default is, otherwise a directory path
@@ -497,6 +490,9 @@ It should only modify the values of Spacemacs settings."
    ;; (default t)
    dotspacemacs-use-clean-aindent-mode t
 
+   ;; Accept SPC as y for prompts if non nil. (default nil)
+   dotspacemacs-use-SPC-as-y nil
+
    ;; If non-nil shift your number row to match the entered keyboard layout
    ;; (only in insert state). Currently supported keyboard layouts are:
    ;; `qwerty-us', `qwertz-de' and `querty-ca-fr'.
@@ -533,10 +529,7 @@ See the header of this file for more information."
 This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
-If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (setq evil-toggle-key "C-'")
-  (setq comp-async-report-warnings-errors nil)
-  )
+If you are unsure, try setting them in `dotspacemacs/user-config' first.")
 
 
 (defun dotspacemacs/user-load ()
@@ -551,76 +544,7 @@ dump.")
 This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
-before packages are loaded."
-  (cua-mode t)
-  (use-package lsp-mode
-    :commands lsp
-    :ensure t
-    :diminish lsp-mode
-    :hook
-    (elixir-mode . lsp)
-    :init
-    (add-to-list 'exec-path "/home/lain/src/elixir-ls"))
-  (setq lsp-elixir-dialyzer-enabled nil)
-  (setq lsp-enable-file-watchers nil)
-
-  (defun lain/open-in-vscode ()
-    "Open current file or dir in vscode"
-    (interactive)
-    (let (($path (if (buffer-file-name) (buffer-file-name) (expand-file-name default-directory ) )))
-      (message "path is %s" $path)
-      (shell-command (format "code-insiders \"%s\"" $path))))
-
-  (defun lain/difftool ()
-    "Open current file or dir in vscode"
-    (interactive)
-    (shell-command (format "cd %s && git difftool -y --skip-to=%s" default-directory
-                           (file-relative-name buffer-file-name))))
-
-  (global-set-key (kbd "C-z") 'undo)
-  (global-set-key (kbd "C-S-Z") 'undo-tree-redo)
-  (global-set-key (kbd "C-d") 'mc/mark-next-like-this)
-  (global-set-key (kbd "<f5>") 'treemacs)
-  (global-set-key (kbd "<M-up>") 'drag-stuff-up)
-  (global-set-key (kbd "<M-down>") 'drag-stuff-down)
-  (global-set-key (kbd "C-w") 'spacemacs/kill-this-buffer)
-  (global-set-key (kbd "C-S-F") 'spacemacs/helm-project-smart-do-search)
-  (global-set-key (kbd "C-S-I") 'format-all-buffer)
-  (global-set-key (kbd "C-t") 'helm-lsp-workspace-symbol)
-  (global-set-key (kbd "C-p") 'helm-projectile)
-
-  ;; C-f in a buffer: open helm-swoop with empty search field
-  (global-set-key (kbd "C-f") 'helm-swoop)
-  (with-eval-after-load 'helm-swoop
-    (setq helm-swoop-pre-input-function
-          (lambda () nil)))
-
-  ;; C-f in helm-swoop with empty search field: activate previous search.
-  ;; C-f in helm-swoop with non-empty search field: go to next match.
-  (with-eval-after-load 'helm-swoop
-    (define-key helm-swoop-map (kbd "C-f") 'previous-history-element))
-
-  ;; (defun lain/helm-swoop-C-f ()
-  ;;   (interactive)
-  ;;   (if (boundp 'helm-swoop-pattern)
-  ;;       (if (equal helm-swoop-pattern "")
-  ;;           (previous-history-element 1)
-  ;;         (helm-next-line))
-  ;;     (helm-next-line)
-  ;;     ))
-
-
-  (global-set-key (kbd "C-s") 'save-buffer)
-  (global-set-key (kbd "C-S-7") 'comment-dwim)
-  (global-set-key (kbd "<C-s-up>") 'windmove-up)
-  (global-set-key (kbd "<C-s-down>") 'windmove-down)
-  (global-set-key (kbd "<C-s-left>") 'windmove-left)
-  (global-set-key (kbd "<C-s-right>") 'windmove-right)
-
-
-  ;;  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
-  (treemacs)
-  )
+before packages are loaded.")
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -630,38 +554,18 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(cua-mode t nil (cua-base))
-   '(custom-safe-themes
-     '("d5a878172795c45441efcd84b20a14f553e7e96366a163f742b95d65a3f55d71" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))
-   '(evil-want-Y-yank-to-eol nil)
-   '(hl-todo-keyword-faces
-     '(("TODO" . "#dc752f")
-       ("NEXT" . "#dc752f")
-       ("THEM" . "#2d9574")
-       ("PROG" . "#4f97d7")
-       ("OKAY" . "#4f97d7")
-       ("DONT" . "#f2241f")
-       ("FAIL" . "#f2241f")
-       ("DONE" . "#86dc2f")
-       ("NOTE" . "#b1951d")
-       ("KLUDGE" . "#b1951d")
-       ("HACK" . "#b1951d")
-       ("TEMP" . "#b1951d")
-       ("FIXME" . "#dc752f")
-       ("XXX+" . "#dc752f")
-       ("\\?\\?\\?+" . "#dc752f")))
-   '(package-selected-packages
-     '(erlang helm-rg yaml-mode web-beautify tern prettier-js npm-mode nodejs-repl livid-mode skewer-mode js2-refactor multiple-cursors js2-mode js-doc import-js grizzl impatient-mode htmlize simple-httpd add-node-modules-path godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc flycheck-golangci-lint company-go go-mode xterm-color vterm terminal-here shell-pop multi-term eshell-z eshell-prompt-extras esh-help ob-elixir helm-gtags ggtags flycheck-credo dap-mode bui counsel-gtags counsel swiper ivy alchemist elixir-mode yasnippet-snippets unfill treemacs-magit smeargle mwim mmm-mode markdown-toc magit-section lsp-ui lsp-treemacs lsp-origami origami helm-lsp lsp-mode helm-gitignore helm-git-grep helm-company helm-c-yasnippet gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy forge markdown-mode magit ghub closql emacsql-sqlite emacsql treepy git-commit with-editor transient flycheck-pos-tip pos-tip company centaur-tabs auto-yasnippet yasnippet ac-ispell auto-complete ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired toc-org symon symbol-overlay string-inflection string-edit spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
-   '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e")))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
-  )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(package-selected-packages
+   '(insert-shebang flycheck-bashate fish-mode company-shell centaur-tabs yasnippet-snippets unfill treemacs-magit smeargle mwim lsp-ui lsp-origami origami helm-lsp helm-gitignore helm-git-grep helm-company helm-c-yasnippet gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy forge magit ghub closql emacsql-sqlite emacsql treepy magit-section git-commit with-editor transient flycheck-pos-tip pos-tip auto-yasnippet yasnippet ac-ispell auto-complete yaml-mode helm-gtags godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc ggtags flycheck-golangci-lint dap-mode lsp-treemacs bui lsp-mode markdown-mode counsel-gtags counsel swiper ivy company-go go-mode company ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection string-edit spaceline-all-the-icons restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
