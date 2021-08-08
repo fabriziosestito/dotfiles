@@ -28,22 +28,21 @@ white-bright = ${xrdb:color15:#222}
 margin-top = 0
 margin-bottom = 0
 
-[bar/top]
+[bar/hltop]
 monitor-primary = true
 override-redirect = false
 
 width = 90%
 height = 48
-offset-x = 24
-offset-y = 24
+offset-x = 5% 
+offset-y = 30
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-font-0 = SF Mono Nerd Font;3
-font-1 = FontAwesome:size=8:3 
+font-0 = FantasqueSansMono Nerd Font:size=15
 
-modules-left = ewmh
+modules-left = hlwmws
 modules-center = title
 modules-right = vol battery wlan dunst discord slack date
 
@@ -233,7 +232,7 @@ label = %date%%time%
 
 [module/wlan]
 type = internal/network
-interface = wlp82s0
+interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <label-connected>
@@ -282,6 +281,46 @@ format-foreground = ${colors.yellow}
 
 hook-0 = echo "%{A1:notify-send "DUNST_COMMAND_PAUSE" && polybar-msg hook dunst 2:}%{A}" &
 hook-1 = echo "%{A1:notify-send "DUNST_COMMAND_RESUME" && polybar-msg hook dunst 1:}%{A}" &
+
+[module/ewmh]
+type = internal/xworkspaces
+
+pin-workspaces = false
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+
+
+icon-0 = 0;1
+icon-1 = 2;2
+icon-2 = 3;3
+icon-3 = 4;4
+icon-4 = 5;5
+icon-5 = 6;6
+icon-6 = 7;7
+icon-7 = 8;8
+
+
+
+format = <label-state>
+
+label-active = %index% %index%
+label-active-padding = 1
+label-active-foreground = ${colors.magenta}
+
+label-occupied = %index%
+label-occupied-padding = 1
+label-occupied-foreground = ${colors.red}
+
+label-empty = %index%
+label-empty-padding = 1
+
+[module/hlwmws]
+type = custom/script
+
+exec-if = ps -C herbstluftwm >/dev/null 2>&1
+exec = MONITOR=HDMI-0 ~/.config/scripts/hlwm_poly.sh
+tail = true
 
 [settings]
 screenchange-reload = true
