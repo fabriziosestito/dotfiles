@@ -1,0 +1,49 @@
+#! /bin/sh
+
+xfsettingsd &
+xfce4-power-manager &
+sleep 1
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+gnome-keyring-daemon
+pkill polybar
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+
+polybar -r -c ~/.config/polybar/config bspwm &
+
+pkill picom
+while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
+picom -b
+
+
+setxkbmap -layout us
+#setxkbmap -option caps:hyper
+# xmodmap ~/.Xmodmap
+sudo xkeysnail ~/.config/xkeysnail/config.py --watch -q & 
+
+nitrogen --restore
+
+pulseaudio --start
+
+dunst &
+
+flameshot &
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc config remove_disabled_monitors  true
+bspc config remove_unplugged_monitors false
+
+bspc monitor -d 1 2 3 4 5 6 7 8
+bspc config border_width         0
+bspc config window_gap          20
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config focus_follows_pointer true
+# bspc rule -a Gimp desktop='^8' state=floating follow=on
+# bspc rule -a Chromium desktop='^2'
+# bspc rule -a mplayer2 state=floating
+# bspc rule -a Kupfer.py focus=on
+# bspc rule -a Screenkey manage=off

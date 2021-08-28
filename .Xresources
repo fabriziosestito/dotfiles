@@ -54,7 +54,7 @@ rofi.opacity:                        100
 rofi.width:                          50
 rofi.lines:                          8
 rofi.columns:                        1
-rofi.font:                           Cascadia Mono 14
+rofi.font:                           Fantasque iCursive Op 15
 rofi.fg:                             #5294E2
 rofi.bg:                             #2a2426
 rofi.fg-active:                      #34405a

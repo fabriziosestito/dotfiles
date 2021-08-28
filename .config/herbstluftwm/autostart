@@ -81,15 +81,59 @@ hc keybind $Mod-Control-Right   resize right +$resizestep
 tag_keys=( {1..8} )
 tag_names=( I II III IV V VI VII VIII )
 
-hc rename default "${tag_names[0]}" || true
-for i in "${!tag_names[@]}" ; do
+# Replace the default section for tags in your autostart by the following:
+# This is the default tag section of the autostart, with a single change:
+# In the use_index keybinding, check the presence of the my_monitor attribute,
+# before focusing the desired tag.
+for i in ${!tag_names[@]} ; do
     hc add "${tag_names[$i]}"
     key="${tag_keys[$i]}"
     if ! [ -z "$key" ] ; then
-        hc keybind "$Mod-$key" use_index "$i"
+        # first check if the tag is locked to some monitor.
+        # if so, first focus the monitor
+        hc keybind "$Mod-$key" \
+            chain , silent substitute M tags."$i".my_monitor \
+                        focus_monitor M \
+                  , use_index "$i"
         hc keybind "$Mod-Shift-$key" move_index "$i"
     fi
 done
+
+# Add a keybinding for locking the current tag to the monitor it is displayed
+# on. This is done by saving the current monitor index in the my_monitor
+# attribute of the focused tag. If the monitor has a (nonempty) name, use the
+# monitor name instead of its index.
+herbstclient keybind $Mod-l chain \
+    , new_attr string tags.focus.my_monitor \
+    , substitute M monitors.focus.index set_attr tags.focus.my_monitor M \
+    , try and \
+        . compare monitors.focus.name != "" \
+        . substitute M monitors.focus.name \
+                set_attr tags.focus.my_monitor M
+
+# Add a keybinding for removing the lock
+herbstclient keybind $Mod-Shift-l \
+    remove_attr tags.focus.my_monitor
+
+
+
+# Statically define which tag should be send to which monitor
+lock_tag_to_monitor() {
+    herbstclient chain \
+        , new_attr string tags.by-name."$1".my_monitor \
+        , set_attr tags.by-name."$1".my_monitor "$2"
+}
+# Already lock some of the tags to a monitor, for example:
+# lock the second tag to the monitor with index 0
+lock_tag_to_monitor I 0
+lock_tag_to_monitor II 0
+lock_tag_to_monitor III 
+lock_tag_to_monitor IV 0
+lock_tag_to_monitor V 0
+lock_tag_to_monitor VI 0
+lock_tag_to_monitor VII 1
+lock_tag_to_monitor VIII 1
+# hc rename default "${tag_names[0]}" || true
 
 # cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible

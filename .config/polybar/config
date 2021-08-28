@@ -61,7 +61,39 @@ module-margin-right = 2
 
 enable-ipc = true
 
+[bar/bspwm]
+monitor-primary = true
+override-redirect = false
 
+width = 70%
+height = 48
+offset-x = 15% 
+offset-y = 30
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = FantasqueSansMono Nerd Font:size=15
+
+modules-left = bspwm
+modules-center = title
+modules-right = vol battery wlan dunst discord slack date
+
+tray-position = 
+tray-padding = 0
+tray-transparent = false
+tray-detached = false
+tray-background = ${colors.background}
+
+spacing = 1
+padding-top = 2
+padding-left = 2
+padding-right = 4
+module-margin-left = 0
+module-margin-right = 2
+
+enable-ipc = true
+line-size = 2 
 [bar/i3top]
 monitor = 
 override-redirect = true
@@ -227,7 +259,6 @@ time = "%H:%M"
 time-alt = "%H:%M:%S"
 
 format-prefix-foreground = ${colors.foreground}
-format-underline = #0a6cf5
 label = %date%%time%
 
 [module/wlan]
@@ -236,12 +267,10 @@ interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <label-connected>
-format-connected-underline = #9f78e1
 label-connected = "直"
 label-connected-foreground = ${colors.secondary}
 
 format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = "睊"
 label-disconnected-foreground = ${colors.red}
 click-left = pavucontrol
@@ -290,29 +319,17 @@ enable-click = true
 enable-scroll = true
 reverse-scroll = true
 
-
-icon-0 = 0;1
-icon-1 = 2;2
-icon-2 = 3;3
-icon-3 = 4;4
-icon-4 = 5;5
-icon-5 = 6;6
-icon-6 = 7;7
-icon-7 = 8;8
-
-
-
 format = <label-state>
 
-label-active = %index% %index%
+label-active = %name%
 label-active-padding = 1
 label-active-foreground = ${colors.magenta}
 
-label-occupied = %index%
+label-occupied = %name%
 label-occupied-padding = 1
 label-occupied-foreground = ${colors.red}
 
-label-empty = %index%
+label-empty = %name%
 label-empty-padding = 1
 
 [module/hlwmws]
@@ -325,3 +342,79 @@ tail = true
 [settings]
 screenchange-reload = true
 
+[module/bspwm]
+type = internal/bspwm
+
+; Only show workspaces defined on the same output as the bar
+; NOTE: The bspwm and XRandR monitor names must match, which they do by default.
+; But if you rename your bspwm monitors with bspc -n this option will no longer
+; behave correctly.
+; Default: true
+pin-workspaces = true
+
+; Output mode flags after focused state label
+; Default: false
+inline-mode = false
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = true
+
+; Set the scroll cycle direction 
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+ws-icon-0 = 1;I
+ws-icon-1 = 2;II
+ws-icon-2 = 3;III
+ws-icon-3 = 4;IV
+ws-icon-4 = 5;V
+ws-icon-5 = 6;VI
+ws-icon-6 = 7;VII
+ws-icon-7 = 8;VIII
+ws-icon-8 = 9;IX
+ws-icon-9 = 0;X
+
+ws-icon-default = ♟
+
+label-dimmed-underline = ${colors.primary}
+
+format = <label-state> <label-mode>
+
+
+label-focused = %icon% 
+label-focused-foreground = ${colors.magenta}
+label-focused-underline = ${colors.magenta}  
+label-focused-padding = 1
+
+label-unfocused = %icon%
+label-unfocused-padding = 1
+
+label-visible = %icon%
+label-visible-underline = #555555
+label-visible-padding = 1
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.red}
+label-urgent-padding = 1
+
+; label-separator = |
+; label-separator-padding = 1.5
+; label-separator-color = ${colors.primary}
+
+label-occupied = %icon%
+label-occupied-padding = 1
+label-occupied-foreground = ${colors.magenta}
+label-empty = %icon%
+label-empty-padding= 1

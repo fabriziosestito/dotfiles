@@ -51,8 +51,11 @@ source ~/.asdf/asdf.fish
 
 set PATH $PATH ~/go/bin
 set PATH $PATH ~/.config/scripts
+set PATH $PATH ~/.local/bin
 set PATH $PATH ~/bin
 set EDITOR nvim
 set KUBE_EDITOR lvim
 set -x KUBECONFIG /etc/rancher/k3s/k3s.yaml
+set -x _JAVA_AWT_WM_NONREPARENTING 1
+
 set --universal FZF_DEFAULT_COMMAND 'fd'

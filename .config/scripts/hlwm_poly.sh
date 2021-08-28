@@ -8,19 +8,19 @@ print_tags() {
 		state=${tag%$name}
 		case "$state" in
 		'#')
-			printf '%%{R} %s %%{R}' "$name"
+			printf '%%{R} %s %%{R}' "%{A1:herbstclient use $name:}$name %{A}"
 			;;
 		'+')
-			printf '%%{F#cccccc}%%{R} %s %%{R}%%{F-}' "$name"
+			printf '%%{F#cccccc}%%{R} %s %%{R}%%{F-}' "%{A1:herbstclient use $name:}$name %{A}"
 			;;
 		'!')
-			printf '%%{R} %s! %%{R}' "$name"
+			printf '%%{R} %s! %%{R}' "%{A1:herbstclient use $name:}$name %{A}"
 			;;
 		'.')
-			printf '%%{F#cccccc} %s %%{F-}' "$name"
+			printf '%%{F#cccccc} %s %%{F-}' "%{A1:herbstclient use $name:}$name %{A}" 
 			;;
 		*)
-			printf ' %s ' ".$name"
+			printf ' %s ' "%{A1:herbstclient use $name:}$name %{A}"
 		esac
 	done
 	printf '\n'
