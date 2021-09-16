@@ -8,6 +8,10 @@ function "mix dyalizer"
     mix dialyzer
 end
 
+function ks
+    kubectl exec --stdin --tty $argv -- bash
+end
+
 set -U fish_color_autosuggestion      brblack
 set -U fish_color_cancel              -r
 set -U fish_color_command             brgreen
