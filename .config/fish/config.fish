@@ -39,6 +39,7 @@ set -U fish_pager_color_description   yellow
 set -U fish_pager_color_prefix        'white' '--bold' '--underline'
 set -U fish_pager_color_progress      'brwhite' '--background=cyan'
 
+alias chiekout="git checkout"
 alias c="code-insiders"
 alias g "clear; fish_greeting"
 alias mm="~/.config/scripts/move_mouse"
@@ -50,6 +51,7 @@ alias ls='ls -FGh --color=auto --hyperlink=auto'
 alias k=kubectl
 alias oni=~/Downloads/Onivim2-x86_64-master.AppImage
 alias o=oni
+alias uu='git fetch upstream main && git reset --hard upstream/main && git push origin main --force'
 set -x ERL_AFLAGS "-kernel shell_history enabled"
 source ~/.asdf/asdf.fish
 
@@ -58,8 +60,8 @@ set PATH $PATH ~/.config/scripts
 set PATH $PATH ~/.local/bin
 set PATH $PATH ~/bin
 set EDITOR nvim
+set GIT_EDITOR micro
 set KUBE_EDITOR lvim
-set -x KUBECONFIG /etc/rancher/k3s/k3s.yaml
 set -x _JAVA_AWT_WM_NONREPARENTING 1
-
+set HELM_EXPERIMENTAL_OCI 1
 set --universal FZF_DEFAULT_COMMAND 'fd'

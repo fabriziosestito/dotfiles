@@ -4,8 +4,9 @@ SETUVAR FZF_DEFAULT_COMMAND:fd
 SETUVAR --export PYENV_ROOT:/home/lain/\x2epyenv
 SETUVAR __fish_initialized:3100
 SETUVAR _fisher_evanlucas_2F_fish_2D_kubectl_2D_completions_files:/home/lain/\x2econfig/fish/completions/kubectl\x2efish
+SETUVAR _fisher_halostatue_2F_fish_2D_elixir_files:/home/lain/\x2econfig/fish/conf\x2ed/halostatue_fish_elixir\x2efish\x1e/home/lain/\x2econfig/fish/completions/mix\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/lain/\x2econfig/fish/functions/fisher\x2efish\x1e/home/lain/\x2econfig/fish/completions/fisher\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eevanlucas/fish\x2dkubectl\x2dcompletions
+SETUVAR _fisher_plugins:evanlucas/fish\x2dkubectl\x2dcompletions\x1ejorgebucaran/fisher\x1ehalostatue/fish\x2delixir
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:brgreen
