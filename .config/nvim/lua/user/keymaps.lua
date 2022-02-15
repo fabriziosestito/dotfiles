@@ -31,10 +31,10 @@ keymap("n", "<C-S-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-S-Right>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-S-Left>", ":vertical resize +2<CR>", opts)
 
-keymap("", "<C-Up>", ":wincmd k<CR>", opts)
-keymap("", "<C-Down>", ":wincmd j<CR>", opts)
-keymap("", "<C-Right>", ":wincmd l<CR>", opts)
-keymap("", "<C-Left>", ":wincmd h<CR>", opts)
+keymap("", "<C-A-Up>", ":wincmd k<CR>", opts)
+keymap("", "<C-A-Down>", ":wincmd j<CR>", opts)
+keymap("", "<C-A-Right>", ":wincmd l<CR>", opts)
+keymap("", "<C-A-Left>", ":wincmd h<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -54,8 +54,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "<A-Up>", ":m .+1<CR>==", opts)
+keymap("v", "<A-Down>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
@@ -67,10 +67,28 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 keymap("", "<C-p>", ":Telescope find_files<cr>", opts)
 keymap("", "<C-r>", ":Telescope projects<cr>", opts)
+keymap("", "<C-j>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+keymap("", "<A-w>", ":Bdelete<cr>", opts)
+keymap("s", "<C-/>", "gcc", opts)
+
+keymap("", "<C-A-t>", ":ToggleTermToggleAll<cr>", opts)
 
 vim.cmd [[
-source $VIMRUNTIME/mswin.vim
-behave mswin
+  source $VIMRUNTIME/mswin.vim
+  behave xterm
+
+  " set
+" let g:toggleterm_terminal_mapping = '<C-t>'
+" or manually...
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+
 ]]
 -- Terminal --
 -- Better terminal navigation
