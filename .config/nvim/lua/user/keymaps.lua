@@ -70,9 +70,8 @@ keymap("", "<C-r>", ":Telescope projects<cr>", opts)
 keymap("", "<C-j>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 keymap("", "<A-w>", ":Bdelete<cr>", opts)
 keymap("s", "<C-/>", "gcc", opts)
-
 keymap("", "<C-A-t>", ":ToggleTermToggleAll<cr>", opts)
-
+vim.api.nvim_set_keymap('i', '<C-\\>', 'copilot#Accept()', {noremap = true, silent = true, expr = true})
 vim.cmd [[
   source $VIMRUNTIME/mswin.vim
   behave xterm
