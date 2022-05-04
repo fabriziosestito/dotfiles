@@ -111,9 +111,6 @@ return packer.startup(function(use)
     end
   }
 
-  use 'RishabhRD/popfix'
-  use 'RishabhRD/nvim-lsputils'
-
   use {
     "mcchrish/zenbones.nvim",
     -- Optionally install Lush. Allows for more configuration or extending the colorscheme
@@ -123,6 +120,31 @@ return packer.startup(function(use)
   }
 
   use 'github/copilot.vim'
+  use 'dstein64/nvim-scrollview'
+
+-- Lua
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+  use({
+    "catppuccin/nvim",
+    as = "catppuccin"
+  })
+
+  use 'sbdchd/neoformat'
+
+  use {'pradyungn/Mountain',
+    rtp="vim"
+  }
   -- use 'famiu/nvim-reload'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

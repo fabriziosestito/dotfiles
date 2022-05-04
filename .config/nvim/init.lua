@@ -20,3 +20,6 @@ require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
 require "user.copilot"
+require "user.scrollview"
+require "user.neoformat"
+
