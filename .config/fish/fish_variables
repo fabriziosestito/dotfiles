@@ -2,7 +2,7 @@
 # VERSION: 3.0
 SETUVAR FZF_DEFAULT_COMMAND:fd
 SETUVAR --export PYENV_ROOT:/home/lain/\x2epyenv
-SETUVAR __fish_initialized:3100
+SETUVAR __fish_initialized:3400
 SETUVAR _fisher_evanlucas_2F_fish_2D_kubectl_2D_completions_files:/home/lain/\x2econfig/fish/completions/kubectl\x2efish
 SETUVAR _fisher_halostatue_2F_fish_2D_elixir_files:/home/lain/\x2econfig/fish/conf\x2ed/halostatue_fish_elixir\x2efish\x1e/home/lain/\x2econfig/fish/completions/mix\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/lain/\x2econfig/fish/functions/fisher\x2efish\x1e/home/lain/\x2econfig/fish/completions/fisher\x2efish
@@ -36,4 +36,5 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:yellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_user_paths:/home/lain/\x2efzf/bin
