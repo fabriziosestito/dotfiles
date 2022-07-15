@@ -59,6 +59,7 @@ set PATH $PATH ~/go/bin
 set PATH $PATH ~/.config/scripts
 set PATH $PATH ~/.local/bin
 set PATH $PATH ~/bin
+set PATH $PATH ~/.cargo/bin
 set EDITOR nvim
 set GIT_EDITOR micro
 set KUBE_EDITOR lvim
