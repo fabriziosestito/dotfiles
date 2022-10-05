@@ -49,9 +49,9 @@ alias n="nvim"
 alias e="emacsclient"
 alias ls='ls -FGh --color=auto --hyperlink=auto'
 alias k=kubectl
-alias oni=~/Downloads/Onivim2-x86_64-master.AppImage
-alias o=oni
 alias uu='git fetch upstream main && git reset --hard upstream/main && git push origin main --force'
+alias reviews='gh search prs --state=open --review-requested=@me'
+
 set -x ERL_AFLAGS "-kernel shell_history enabled"
 source ~/.asdf/asdf.fish
 
@@ -66,3 +66,7 @@ set KUBE_EDITOR lvim
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set HELM_EXPERIMENTAL_OCI 1
 set --universal FZF_DEFAULT_COMMAND 'fd'
+
+# Wasmer
+export WASMER_DIR="/home/lain/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"

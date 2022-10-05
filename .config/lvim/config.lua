@@ -160,7 +160,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-  { "gustavoprietop/doom-themes.nvim" },
+  { "pradyungn/Mountain", rtp = "vim" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
