@@ -64,7 +64,7 @@ enable-ipc = true
 [bar/bspwm]
 monitor-primary = true
 override-redirect = false
-
+wm-restack = bspwm
 width = 70%
 height = 48
 offset-x = 15% 
