@@ -1,3 +1,1 @@
-prime-offload
-xrdb ~/.Xresources
-i3
+bspwm &

@@ -51,7 +51,7 @@ alias ls='ls -FGh --color=auto --hyperlink=auto'
 alias k=kubectl
 alias uu='git fetch upstream main && git reset --hard upstream/main && git push origin main --force'
 alias reviews='gh search prs --state=open --review-requested=@me'
-
+alias ls='exa'
 set -x ERL_AFLAGS "-kernel shell_history enabled"
 source ~/.asdf/asdf.fish
 

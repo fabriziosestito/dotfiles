@@ -1,14 +1,15 @@
 local wezterm = require("wezterm")
-local colors = require('colors/rose-pine').colors()
-local window_frame = require('colors/rose-pine').window_frame()
+-- local colors = require('colors/rose-pine').colors()
+-- local window_frame = require('colors/rose-pine').window_frame()
 return {
   window_padding = {
-    left = 40,
-    right = 40,
-    top = 40,
-    bottom = 40,
+    left = 20,
+    right = 20,
+    top = 20,
+    bottom = 20,
   },
-  colors = colors,
+  color_scheme = "zenbones_dark",
+  -- colors = colors,
   font = wezterm.font({ family = "PragmataPro", harfbuzz_features = { "calt=1", "clig=1", "c2sc=0", "ss13=1" } }),
   font_rules = {
     -- Define a rule that matches when italic text is shown
