@@ -1,0 +1,76 @@
+{
+  FrameBorderColor = "#b5b5b2";
+  FTitleColor = "#ffffff";
+  ClipTitleFont = "PragmataPro:slant=0:weight=200:width=100:pixelsize=12";
+  IconTitleColor = "#ffffff";
+  MenuTitleFont = "Trebuchet MS,sans serif:bold:pixelsize=12";
+  MoveTo6to12Head = None;
+  DbClickFullScreen = NO;
+  FrameFocusedBorderColor = "#b5b5b2";
+  LHMaximizeKey = "Shift+Mod4+H";
+  ResizebarBack = (solid, "#989aa6");
+  BHMaximizeKey = "Shift+Mod4+K";
+  CloseRootMenuByLeftOrRightMouseClick = NO;
+  RHMaximizeKey = "Shift+Mod4+L";
+  FrameSelectedBorderColor = "#fefefe";
+  THMaximizeKey = "Shift+Mod4+J";
+  AntialiasedText = YES;
+  WorkspaceNameDisplayPosition = none;
+  MenuTextFont = "PragmataPro:slant=0:weight=80:width=100:pixelsize=16";
+  MenuTitleBack = (mvgradient, "#18191f", "#474967", "#413b6d");
+  HighlightColor = "#ffffff";
+  FocusMode = sloppy;
+  CClipTitleColor = "#999999";
+  IconPath = (
+    "/home/lain/GNUstep/Library/Icons",
+    "/home/lain/GNUstep/Library/WindowMaker/Pixmaps",
+    "/home/lain/GNUstep/Library/WindowMaker/CachedPixmaps",
+    "~/pixmaps",
+    "/usr/share/WindowMaker/Icons",
+    "/usr/share/WindowMaker/Pixmaps",
+    "/usr/share/pixmaps"
+  );
+  PTitleBack = (mhgradient, "#5a5c66", "rgb:70/72/7e", "rgb:45/47/4e");
+  UTitleBack = (mhgradient, "#989aa6", "#9fa1b5", "#86879b");
+  CirculateRaise = YES;
+  MenuDisabledColor = "#999999";
+  IconTitleBack = "#18191f";
+  PixmapPath = (
+    "/home/lain/GNUstep/Library/WindowMaker/Pixmaps",
+    "/home/lain/GNUstep/Library/WindowMaker/Backgrounds",
+    "/home/lain/GNUstep/Library/WindowMaker/CachedPixmaps",
+    "~/pixmaps",
+    "/usr/share/WindowMaker/Pixmaps",
+    "/usr/share/WindowMaker/Backgrounds",
+    "/usr/share/pixmaps"
+  );
+  FTitleBack = (mhgradient, "#384246", "#707080", "#4a4a61");
+  IconTitleFont = "PragmataPro:slant=0:weight=80:width=100:pixelsize=12";
+  LargeDisplayFont = "PragmataPro:slant=0:weight=80:width=100:pixelsize=24";
+  MenuTitleColor = "#ffffff";
+  SmoothWorkspaceBack = YES;
+  WorkspaceBack = (mvgradient, "rgb:50/50/75", "#6a6f9e", "#4b4f70", "#28293c");
+  HighlightTextColor = "#000000";
+  EdgeResistance = 49;
+  EnforceIconMargin = NO;
+  ClipTitleColor = "#ffffff";
+  MoveTo12to6Head = None;
+  WindowTitleFont = "PragmataPro:slant=0:weight=80:width=100:pixelsize=16";
+  KbdModeLock = NO;
+  ToggleKbdModeKey = None;
+  OpaqueResize = YES;
+  MenuTextBack = (mhgradient, "#384246", "#707080", "#4a4a61");
+  WindowPlacement = smart;
+  MenuTextColor = "#ffffff";
+  IconBack = (
+    mdgradient,
+    gray40,
+    "#6d6aa4",
+    "#564e8c",
+    "#41436c",
+    "#464771",
+    "#595090"
+  );
+  UTitleColor = "#333333";
+  PTitleColor = "#ffffff";
+}

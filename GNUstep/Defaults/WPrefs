@@ -1,0 +1,37 @@
+{
+  TextureList = (
+    (
+      "New Texture",
+      (solid, "#2a2426"),
+      "/home/lain/GNUstep/Library/WindowMaker/WPrefs/63c5a84b.cache"
+    )
+  );
+  NoXSetStuff = NO;
+  ColorList = (
+    "#000000",
+    "#292929",
+    "#525252",
+    "#838383",
+    "#acacac",
+    "#d5d5d5",
+    "#ffffff",
+    "#d5d58b",
+    "#d5a47b",
+    "#8bd58b",
+    "#8bd5cd",
+    "#d58b8b",
+    "#8b9bd5",
+    "#bc85d5",
+    "#d58bbc",
+    "#d54a4a",
+    "#4a5ad5",
+    "#4ad5cd",
+    "#4ad55a",
+    "#cdd54a",
+    "#d5834a",
+    "#89d531",
+    "#cd29c5",
+    "#cd2973"
+  );
+  BalloonHelp = NO;
+}
