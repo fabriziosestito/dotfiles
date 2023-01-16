@@ -11,7 +11,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "zenbones"
+lvim.colorscheme = "miramare"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -160,7 +160,8 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- Additional Plugins
 lvim.plugins = {
   { "mcchrish/zenbones.nvim" },
-  { "rose-pine/neovim", requires = "rktjmp/lush.nvim" }
+  { "rose-pine/neovim", requires = "rktjmp/lush.nvim" },
+  { "franbach/miramare" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

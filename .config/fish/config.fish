@@ -60,8 +60,8 @@ set PATH $PATH ~/.config/scripts
 set PATH $PATH ~/.local/bin
 set PATH $PATH ~/bin
 set PATH $PATH ~/.cargo/bin
-set EDITOR nvim
-set GIT_EDITOR micro
+set EDITOR lvim
+set GIT_EDITOR lvim
 set KUBE_EDITOR lvim
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set HELM_EXPERIMENTAL_OCI 1
