@@ -6,83 +6,41 @@ Xft.dpi: 96
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
+
 ! special
-*.foreground:   #e6d6ac
-*.background:   #2a2426
-*.cursorColor:  #e6d6ac
+*.foreground:   #ffffff
+*.background:   #161616
+*.cursorColor:  #ffffff
 
 ! black
-*.color0:       #2a2426
-*.color8:       #52464a
+*.color0:       #161616
+*.color8:       #525252
 
 ! red
-*.color1:       #e68183
-*.color9:       #ff8b92
+*.color1:       #33b1ff
+*.color9:       #33b1ff
 
 ! green
-*.color2:       #a7c080
-*.color10:      #ddffa7
+*.color2:       #ff7eb6
+*.color10:      #ff7eb6
 
 ! yellow
-*.color3:       #d9bb80
-*.color11:      #ffae57
+*.color3:       #42be65
+*.color11:      #42be65
 
 ! blue
-*.color4:       #89beba
-*.color12:      #9cc4ff
+*.color4:       #08bdba
+*.color12:      #08bdba
 
 ! magenta
-*.color5:       #d3a0bc
-*.color13:      #e1acff
+*.color5:       #82cfff
+*.color13:      #82cfff
 
 ! cyan
-*.color6:       #87c095
-*.color14:      #95e6cb
+*.color6:       #78a9ff
+*.color14:      #78a9ff
 
 ! white
-*.color7:       #e6d6ac
+*.color7:       #dde1e6
 *.color15:      #ffffff
-
-! === rofi ===
-
-rofi.modi:                           ssh,window,drun,run
-rofi.sidebar-mode:                   true
-rofi.terminal:                       termite
-rofi.ssh-client:                     ssh
-rofi.ssh-command:                    {terminal} -e "{ssh-client} {host}"
-rofi.opacity:                        100
-rofi.width:                          50
-rofi.lines:                          8
-rofi.columns:                        1
-rofi.font:                           Fantasque iCursive Op 15
-rofi.fg:                             #5294E2
-rofi.bg:                             #2a2426
-rofi.fg-active:                      #34405a
-rofi.fg-urgent:                      #34405a
-rofi.hlfg-active:                    #5e73a0
-rofi.hlfg-urgent:                    #5e73a0
-rofi.bg-active:                      #34405a
-rofi.bg-urgent:                      #34405a
-rofi.hlbg-active:                    #5d729f
-rofi.hlbg-urgent:                    #5d729f
-rofi.bgalt:                          #5671a0
-rofi.hlfg:                           #34405a
-rofi.hlbg:                           #34405a
-rofi.bc:                             #789ee1
-! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
-rofi.color-normal: #2a2426,  #e6d6ac,  #52464a,  #87c095,  #FFFFFF
-
-!                  'background', 'border'
-rofi.color-window: #2a2426,      #52464a
-rofi.bw:                             10
-rofi.location:                       0
-rofi.padding:                        20
-rofi.levenshtein-sort:               true
-rofi.case-sensitive:                 false
-rofi.fuzzy:                          false
-rofi.line-margin:                    2
-rofi.separator-style:                solid
-rofi.hide-scrollbar:                 true
-rofi.markup-rows:                    false
-rofi.scrollbar-width:                8
 

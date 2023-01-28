@@ -441,3 +441,11 @@ go/pkg/mod/cache
 /media/*
 /lost+found
 /var/lib/kubelet/pods
+
+/timeshift/*
+
+home/lain/VirtualBox VMs/
+
+home/lain/.config/discord/Local Storage
+
+

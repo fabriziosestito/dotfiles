@@ -11,7 +11,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "miramare"
+lvim.colorscheme = "oxocarbon"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -161,7 +161,8 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.plugins = {
   { "mcchrish/zenbones.nvim" },
   { "rose-pine/neovim", requires = "rktjmp/lush.nvim" },
-  { "franbach/miramare" }
+  { "franbach/miramare" },
+  { "nyoom-engineering/oxocarbon.nvim" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

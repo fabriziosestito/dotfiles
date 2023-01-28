@@ -4,7 +4,13 @@
 
 # terminal emulator
 super + Return
-	tilix
+	bspc rule -a \* -o state=tiled && wezterm
+
+super + shift + Return
+  bspc rule -a \* -o state=pseudo_tiled && wezterm
+
+super + ctrl + Return
+  bspc rule -a \* -o state=floating && wezterm
 
 # program launcher
 super + d
@@ -14,6 +20,8 @@ super + d
 super + Escape
 	pkill -USR1 -x sxhkd
 
+super + {_,shift + } space
+	bspc node '@parent' -R {_,-}90
 #
 # bspwm hotkeys
 #
