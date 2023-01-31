@@ -162,9 +162,29 @@ lvim.plugins = {
   { "mcchrish/zenbones.nvim" },
   { "rose-pine/neovim", requires = "rktjmp/lush.nvim" },
   { "franbach/miramare" },
-  { "nyoom-engineering/oxocarbon.nvim" }
-}
+  { "nyoom-engineering/oxocarbon.nvim" },
+  { "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require("copilot").setup {
+          plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
+          suggestion = { enabled = true, auto_trigger = true },
+        }
+      end, 100)
+    end,
+  },
 
+  -- { "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua", "nvim-cmp" },
+  --   config = function()
+  --     require("copilot_cmp").setup()
+  --   end
+  -- },
+}
+-- Can not be placed into the config method of the plugins.
+-- lvim.builtin.cmp.formatting.source_names["copilot"] = "(Copilot)"
+-- table.insert(lvim.builtin.cmp.sources, 1, { name = "copilot" })
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },
