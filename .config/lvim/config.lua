@@ -163,6 +163,13 @@ lvim.plugins = {
   { "rose-pine/neovim", requires = "rktjmp/lush.nvim" },
   { "franbach/miramare" },
   { "nyoom-engineering/oxocarbon.nvim" },
+  {
+    "ray-x/sad.nvim",
+    requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+    config = function()
+      require("sad").setup {}
+    end,
+  },
   { "zbirenbaum/copilot.lua",
     event = { "VimEnter" },
     config = function()
@@ -174,7 +181,6 @@ lvim.plugins = {
       end, 100)
     end,
   },
-
   -- { "zbirenbaum/copilot-cmp",
   --   after = { "copilot.lua", "nvim-cmp" },
   --   config = function()
@@ -182,6 +188,7 @@ lvim.plugins = {
   --   end
   -- },
 }
+
 -- Can not be placed into the config method of the plugins.
 -- lvim.builtin.cmp.formatting.source_names["copilot"] = "(Copilot)"
 -- table.insert(lvim.builtin.cmp.sources, 1, { name = "copilot" })
