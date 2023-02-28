@@ -160,12 +160,12 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust_analyz
 -- Additional Plugins
 lvim.plugins = {
   { "mcchrish/zenbones.nvim" },
-  { "rose-pine/neovim", requires = "rktjmp/lush.nvim" },
+  { "rose-pine/neovim", dependencies = "rktjmp/lush.nvim" },
   { "franbach/miramare" },
   { "nyoom-engineering/oxocarbon.nvim" },
   {
     "ray-x/sad.nvim",
-    requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+    dependencies = { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
     config = function()
       require("sad").setup {}
     end,
@@ -189,8 +189,8 @@ lvim.plugins = {
   },
   {
     "saecki/crates.nvim",
-    tag = "v0.3.0",
-    requires = { "nvim-lua/plenary.nvim" },
+    version = "v0.3.0",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("crates").setup()
     end,
