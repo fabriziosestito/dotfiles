@@ -10,10 +10,43 @@
         Position = "0,0";
         Lock = No;
         Command = "-";
+      },
+      {
+        Forced = No;
+        Name = firefox.Firefox;
+        DropCommand = "firefox %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,2";
+        Lock = No;
+        PasteCommand = "firefox %s";
+        Command = firefox;
+      },
+      {
+        Forced = No;
+        Name = thunar.Thunar;
+        DropCommand = "thunar %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,1";
+        Lock = No;
+        PasteCommand = "thunar %s";
+        Command = thunar;
+      },
+      {
+        Forced = No;
+        Name = wmbattery.wmbattery;
+        DropCommand = "wmbattery %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,3";
+        Lock = No;
+        PasteCommand = "wmbattery %s";
+        Command = wmbattery;
       }
     );
     Lowered = Yes;
-    Position = "-64,0";
+    Position = "5296,219";
     Applications1440 = (
       {
         Forced = No;
@@ -23,6 +56,39 @@
         Position = "0,0";
         Lock = No;
         Command = "-";
+      },
+      {
+        Forced = No;
+        Name = firefox.Firefox;
+        DropCommand = "firefox %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,2";
+        Lock = No;
+        PasteCommand = "firefox %s";
+        Command = firefox;
+      },
+      {
+        Forced = No;
+        Name = thunar.Thunar;
+        DropCommand = "thunar %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,1";
+        Lock = No;
+        PasteCommand = "thunar %s";
+        Command = thunar;
+      },
+      {
+        Forced = No;
+        Name = wmbattery.wmbattery;
+        DropCommand = "wmbattery %d";
+        BuggyApplication = No;
+        AutoLaunch = No;
+        Position = "0,3";
+        Lock = No;
+        PasteCommand = "wmbattery %s";
+        Command = wmbattery;
       }
     );
   };
@@ -31,7 +97,7 @@
     Name = Logo.WMClip;
     BuggyApplication = No;
     AutoLaunch = No;
-    Position = "0,0";
+    Position = "5296,1376";
     Lock = No;
     Command = "-";
   };
@@ -42,7 +108,7 @@
         AutoRaiseLower = No;
         AutoCollapse = No;
         Applications = ();
-        Collapsed = No;
+        Collapsed = Yes;
         AutoAttractIcons = No;
         Lowered = Yes;
       };
@@ -69,6 +135,17 @@
         Lowered = Yes;
       };
       Name = "Workspace 3";
+    },
+    {
+      Clip = {
+        AutoRaiseLower = No;
+        AutoCollapse = No;
+        Applications = ();
+        Collapsed = No;
+        AutoAttractIcons = No;
+        Lowered = Yes;
+      };
+      Name = "Workspace 4";
     }
   );
 }

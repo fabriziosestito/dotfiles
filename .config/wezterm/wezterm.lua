@@ -42,8 +42,12 @@ return {
 	},
 	front_end = "WebGpu",
 	-- colors = colors,
-	font = wezterm.font({ family = "CartographCF Nerd Font", weight = "Regular" }),
-	-- font = wezterm.font({ family = "PragmataPro", harfbuzz_features = { "calt=1", "clig=1", "c2sc=0", "ss13=1" } }),
+	-- font = wezterm.font({ family = "CartographCF Nerd Font", weight = "Regular" }),
+	font = wezterm.font_with_fallback({
+		{ family = "PragmataProLiga Nerd Font", weight = "Regular", harfbuzz_features = { "calt=1" } },
+		"CartographCF Nerd Font",
+	}),
+	-- font = wezterm.font({ family = "PragmataPro Mono" }),
 	-- font_rules = {
 	--   -- Define a rule that matches when italic text is shown
 	--   {
@@ -74,7 +78,7 @@ return {
 	--     font = wezterm.font({ family = "PragmataPro", harfbuzz_features = { "calt=1", "clig=1", "ss06=1" } }),
 	--   },
 	-- },
-	font_size = 15,
+	font_size = 18,
 	window_decorations = "TITLE",
 	use_fancy_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = false,

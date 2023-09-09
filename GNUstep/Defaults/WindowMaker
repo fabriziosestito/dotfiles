@@ -1,9 +1,9 @@
 {
+  FrameBorderColor = "#b6b6b3";
+  DontLinkWorkspaces = NO;
   THMaximizeKey = "Shift+Mod4+J";
-  FTitleColor = "#ffffff";
-  FrameBorderColor = "#b5b5b2";
-  MenuDisabledColor = "#999999";
-  IconTitleBack = "#18191f";
+  MenuDisabledColor = gray40;
+  HotCornerEdge = 2;
   PixmapPath = (
     "/home/lain/GNUstep/Library/WindowMaker/Pixmaps",
     "/home/lain/GNUstep/Library/WindowMaker/Backgrounds",
@@ -13,47 +13,40 @@
     "/usr/share/WindowMaker/Backgrounds",
     "/usr/share/pixmaps"
   );
-  FTitleBack = (mhgradient, "#384246", "#707080", "#4a4a61");
+  IconTitleBack = "rgb:50/5a/5e";
+  FTitleBack = (hgradient, "rgb:50/5a/5e", "rgb:20/2a/2e");
   ToggleKbdModeKey = None;
-  ClipTitleFont = "PragmataPro:slant=0:weight=200:width=100:pixelsize=12";
-  IconTitleFont = "PragmataPro:slant=0:weight=80:width=100:pixelsize=12";
+  DoNotMakeAppIconsBounce = YES;
+  ClipTitleFont = "Verdana:bold:pixelsize=10";
   OpaqueResize = YES;
-  MenuTextBack = (mhgradient, "#384246", "#707080", "#4a4a61");
-  LargeDisplayFont = "PragmataPro:slant=0:weight=80:width=100:pixelsize=24";
-  WindowPlacement = smart;
-  IconTitleColor = "#ffffff";
-  MenuTextColor = "#ffffff";
-  IconBack = (
-    mdgradient,
-    gray40,
-    "#6d6aa4",
-    "#564e8c",
-    "#41436c",
-    "#464771",
-    "#595090"
-  );
+  IconTitleFont = "Arial,sans serif:pixelsize=9";
+  MenuTextBack = (hgradient, "rgb:c2/c0/c5", "rgb:82/80/85");
+  WindowPlacement = center;
+  LargeDisplayFont = "Trebuchet MS,sans serif:pixelsize=24";
+  HotCornerDelay = 250;
+  IconificationStyle = flip;
+  CenterKey = None;
+  TitleJustify = left;
+  SingleClickLaunch = YES;
   AntialiasedText = YES;
-  MenuTitleColor = "#ffffff";
   MenuTitleFont = "Trebuchet MS,sans serif:bold:pixelsize=12";
-  WorkspaceNameDisplayPosition = none;
-  MoveTo6to12Head = None;
+  HotCorners = YES;
   SmoothWorkspaceBack = YES;
+  MoveTo6to12Head = None;
   DbClickFullScreen = NO;
-  MenuTextFont = "PragmataPro:slant=0:weight=80:width=100:pixelsize=16";
-  WorkspaceBack = (solid, "#333340");
-  HighlightTextColor = "#000000";
-  MenuTitleBack = (mvgradient, "#18191f", "#474967", "#413b6d");
+  IconPosition = blv;
+  MenuTextFont = "Trebuchet MS,sans serif:pixelsize=12";
   EdgeResistance = 49;
+  MenuTitleBack = (hgradient, "rgb:50/5a/5e", "rgb:20/2a/2e");
   EnforceIconMargin = NO;
-  ClipTitleColor = "#ffffff";
+  AutoArrangeIcons = YES;
   MoveTo12to6Head = None;
-  HighlightColor = "#ffffff";
-  FrameFocusedBorderColor = "#b5b5b2";
+  HotCornerActions = (None, None, None, None);
+  FrameFocusedBorderColor = "#b6b6b3";
   FocusMode = sloppy;
-  WindowTitleFont = "PragmataPro:slant=0:weight=80:width=100:pixelsize=16";
-  CClipTitleColor = "#999999";
+  WindowTitleFont = "Trebuchet MS,sans serif:bold:pixelsize=12";
   LHMaximizeKey = "Shift+Mod4+H";
-  ResizebarBack = (solid, "#989aa6");
+  ResizebarBack = (solid, "rgb:c2/c0/c5");
   IconPath = (
     "/home/lain/GNUstep/Library/Icons",
     "/home/lain/GNUstep/Library/WindowMaker/Pixmaps",
@@ -63,14 +56,13 @@
     "/usr/share/WindowMaker/Pixmaps",
     "/usr/share/pixmaps"
   );
-  BHMaximizeKey = "Shift+Mod4+K";
+  MiniPreviewSize = 512;
   KbdModeLock = NO;
-  PTitleBack = (mhgradient, "#5a5c66", "rgb:70/72/7e", "rgb:45/47/4e");
-  UTitleColor = "#333333";
-  UTitleBack = (mhgradient, "#989aa6", "#9fa1b5", "#86879b");
+  BHMaximizeKey = "Shift+Mod4+K";
+  PTitleBack = (hgradient, "rgb:51/50/55", "rgb:80/80/80");
   CirculateRaise = YES;
-  PTitleColor = "#ffffff";
+  UTitleBack = (hgradient, "rgb:c2/c0/c5", "rgb:82/80/85");
   CloseRootMenuByLeftOrRightMouseClick = NO;
   RHMaximizeKey = "Shift+Mod4+L";
-  FrameSelectedBorderColor = "#fefefe";
+  FrameSelectedBorderColor = "#ffffff";
 }

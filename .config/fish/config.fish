@@ -62,4 +62,4 @@ set -x _JAVA_AWT_WM_NONREPARENTING 1
 set HELM_EXPERIMENTAL_OCI 1
 set --universal FZF_DEFAULT_COMMAND 'fd'
 set -gx PATH $PATH $HOME/.krew/bin
-
+set GPG_TTY $(tty)
