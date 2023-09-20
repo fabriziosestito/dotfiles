@@ -48,7 +48,6 @@ alias reviews='gh search prs --state=open --review-requested=@me'
 alias ls='exa'
 set -x ERL_AFLAGS "-kernel shell_history enabled"
 source ~/.asdf/asdf.fish
-source  ~/.asdf/plugins/golang/set-env.fish
 
 set PATH $PATH ~/go/bin
 set PATH $PATH ~/.config/scripts

@@ -45,7 +45,6 @@ return {
 	-- font = wezterm.font({ family = "CartographCF Nerd Font", weight = "Regular" }),
 	font = wezterm.font_with_fallback({
 		{ family = "PragmataProLiga Nerd Font", weight = "Regular", harfbuzz_features = { "calt=1" } },
-		"CartographCF Nerd Font",
 	}),
 	-- font = wezterm.font({ family = "PragmataPro Mono" }),
 	-- font_rules = {
