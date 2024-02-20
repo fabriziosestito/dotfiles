@@ -17,3 +17,4 @@
 xset m 20/10 4 &
 pulseaudio -D &
 picom --config ~/.config/picom-wmaker.conf &
+

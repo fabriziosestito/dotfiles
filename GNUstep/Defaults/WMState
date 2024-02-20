@@ -17,32 +17,10 @@
         DropCommand = "firefox %d";
         BuggyApplication = No;
         AutoLaunch = No;
-        Position = "0,2";
+        Position = "0,1";
         Lock = No;
         PasteCommand = "firefox %s";
         Command = firefox;
-      },
-      {
-        Forced = No;
-        Name = thunar.Thunar;
-        DropCommand = "thunar %d";
-        BuggyApplication = No;
-        AutoLaunch = No;
-        Position = "0,1";
-        Lock = No;
-        PasteCommand = "thunar %s";
-        Command = thunar;
-      },
-      {
-        Forced = No;
-        Name = wmbattery.wmbattery;
-        DropCommand = "wmbattery %d";
-        BuggyApplication = No;
-        AutoLaunch = No;
-        Position = "0,3";
-        Lock = No;
-        PasteCommand = "wmbattery %s";
-        Command = wmbattery;
       }
     );
     Lowered = Yes;
@@ -63,32 +41,10 @@
         DropCommand = "firefox %d";
         BuggyApplication = No;
         AutoLaunch = No;
-        Position = "0,2";
+        Position = "0,1";
         Lock = No;
         PasteCommand = "firefox %s";
         Command = firefox;
-      },
-      {
-        Forced = No;
-        Name = thunar.Thunar;
-        DropCommand = "thunar %d";
-        BuggyApplication = No;
-        AutoLaunch = No;
-        Position = "0,1";
-        Lock = No;
-        PasteCommand = "thunar %s";
-        Command = thunar;
-      },
-      {
-        Forced = No;
-        Name = wmbattery.wmbattery;
-        DropCommand = "wmbattery %d";
-        BuggyApplication = No;
-        AutoLaunch = No;
-        Position = "0,3";
-        Lock = No;
-        PasteCommand = "wmbattery %s";
-        Command = wmbattery;
       }
     );
   };

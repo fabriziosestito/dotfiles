@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 -- local colors = require('colors/rose-pine').colors()
 -- local window_frame = require('colors/rose-pine').window_frame()
+
 return {
 	window_padding = {
 		left = 30,
@@ -67,7 +68,6 @@ return {
 	--     -- Match based on reverse video
 	--     -- reverse = false,
 
-	--     -- Match based on strikethrough
 	--     -- strikethrough = false,
 
 	--     -- Match based on the invisible attribute
@@ -83,4 +83,15 @@ return {
 	hide_tab_bar_if_only_one_tab = false,
 	-- You can specify some parameters to influence the font selection;
 	-- for example, this selects a Bold, Italic font variant.
+	--
+	--
+
+	keys = {
+		-- This will create a new split and run your default program inside it
+		{
+			key = "/",
+			mods = "CTRL",
+			action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+		},
+	},
 }
